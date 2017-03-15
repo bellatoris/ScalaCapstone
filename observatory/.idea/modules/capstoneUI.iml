@@ -21,5 +21,21 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="SBT: com.lihaoyi:scalatags_sjs0.6_2.11:0.6.0:jar" level="project" />
+    <orderEntry type="module-library">
+      <library name="SBT: unmanaged-sources-and-docs">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.avro/avro-mapred/srcs/avro-mapred-1.7.7-sources.jar!/" />
+          <root url="jar://$USER_HOME$/.ivy2/cache/org.apache.mesos/mesos/srcs/mesos-0.21.1-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.11.8:jar" level="project" />
+    <orderEntry type="library" scope="TEST" name="SBT: org.scala-js:scalajs-test-interface_2.11:0.6.11:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-js:scalajs-library_2.11:0.6.11:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-js:scalajs-dom_sjs0.6_2.11:0.9.1:jar" level="project" />
+    <orderEntry type="library" name="SBT: com.lihaoyi:sourcecode_sjs0.6_2.11:0.1.1:jar" level="project" />
   </component>
 </module>
