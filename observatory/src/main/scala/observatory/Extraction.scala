@@ -19,14 +19,19 @@ object Extraction {
     new File(this.getClass.getClassLoader.getResource("." + path).toURI).getPath
   }
 
+  /**
+    * filter and map
+    * @param lines
+    * @return
+    */
   def rawStation(lines: RDD[String]) =
     lines.filter(line => {
       val arr = line.split(",")
       arr.size == 4 && arr(2) != "" && arr(3) != ""
     }).map(line => {
       val arr = line.split(",")
-      val stn = if (arr(0) == "") None else arr(0).toInt
-      val wban = if (arr(1) == "") None else arr(1).toInt
+      val stn = if (arr(0) == "") -1 else arr(0).toInt
+      val wban = if (arr(1) == "") -1 else arr(1).toInt
       ((stn , wban) , Location(lat = arr(2).toDouble,
                                lon = arr(3).toDouble))
     })
@@ -37,8 +42,8 @@ object Extraction {
       arr(2) != "" && arr(3) != "" && arr(4).toDouble != 9999.9
     }).map(line => {
       val arr = line.split(",")
-      val stn = if (arr(0) =="") None else arr(0).toInt
-      val wban = if (arr(1) == "") None else arr(1).toInt
+      val stn = if (arr(0) == "") -1 else arr(0).toInt
+      val wban = if (arr(1) == "") -1 else arr(1).toInt
       val month = arr(2).toInt
       val day = arr(3).toInt
       val temperature = arr(4).toDouble
@@ -66,7 +71,7 @@ object Extraction {
     * @return A sequence containing, for each location, the average temperature over the year.
     */
   def locationYearlyAverageRecords(records: Iterable[(LocalDate, Location, Double)]): Iterable[(Location, Double)] = {
-    records.groupBy(x => x._2).mapValues(x => x.aggregate(0.0)((x, y) => x + y._3, _ + _ ) / x.size).toList
+    records.groupBy(x => x._2).mapValues(x => x.aggregate(0.0)((x, y) => x + y._3, _ + _ ) / x.size)
   }
 
 }
